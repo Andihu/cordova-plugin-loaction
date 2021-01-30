@@ -4,7 +4,7 @@
 
 仿微信交互
 
-<img src="D:\WorkSpace\xiaoyuan_project\cordova_project\plugin\cordova-plugin-location\image\Video_20210130_120747_208.gif" style="zoom: 66%;" /><img src="D:\WorkSpace\xiaoyuan_project\cordova_project\plugin\cordova-plugin-location\image\Screenshot_20210116_173239_io.cordova.hellocordova - 副本.jpg" style="zoom:25%;" /><img src="D:\WorkSpace\xiaoyuan_project\cordova_project\plugin\cordova-plugin-location\image\Screenshot_20210116_173208_io.cordova.hellocordova.jpg" style="zoom:25%;" />
+<img src="image\Video_20210130_120747_208.gif" style="zoom: 66%;" /><img src="image\Screenshot_20210116_173239_io.cordova.hellocordova - 副本.jpg" style="zoom:25%;" /><img src="image\Screenshot_20210116_173208_io.cordova.hellocordova.jpg" style="zoom:25%;" />
 
 ### 坐标系
 
