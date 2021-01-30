@@ -1,0 +1,14 @@
+{
+  "name": "Location",
+  "version": "1.0.0",
+  "description": "",
+  "cordova": {
+    "id": "cordova-plugin-location",
+    "platforms": []
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "HU JIAN",
+  "license": "Apache 2.0"
+}

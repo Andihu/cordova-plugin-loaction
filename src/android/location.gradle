@@ -1,0 +1,16 @@
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url 'https://jitpack.io' }
+}
+android {
+	sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/libs']
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.sothree.slidinguppanel:library:3.4.0'
+}

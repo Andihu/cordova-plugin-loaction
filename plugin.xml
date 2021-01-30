@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-location" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Location</name>
+    <js-module name="Location" src="www/Location.js">
+        <clobbers target="cordova.plugins.Location" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="Location">
+                <param name="android-package" value="com.microfountain.location.Location" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+
+        <framework src="src/android/location.gradle" custom="true" type="gradleReference" />
+
+        <!-- AndroidManifest -->
+        <config-file parent="/manifest" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <!-- 这个权限用于访问GPS定位-->
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+            <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+            <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <!-- 访问网络，网络定位需要上网-->
+            <uses-permission android:name="android.permission.INTERNET" />
+
+
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.microfountain.location.LocationDetailActivity" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+            <activity android:name="com.microfountain.location.LocationActivity" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+            <!-- 需要修改为开发者自己申请的百度定位id -->
+            <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="lZ2IlAKBZ63gfa5jv1mRbWLSGZCeXlhX" />
+        </config-file>
+
+        <!-- libs -->
+        <source-file src="src/android/libs/arm64-v8a/libBaiduMapSDK_base_v6_4_0.so" target-dir="app/src/main/libs/arm64-v8a"/>
+        <source-file src="src/android/libs/arm64-v8a/libBaiduMapSDK_map_v6_4_0.so" target-dir="app/src/main/libs/arm64-v8a"/>
+        <source-file src="src/android/libs/arm64-v8a/liblocSDK8a.so" target-dir="app/src/main/libs/arm64-v8a"/>
+
+        <source-file src="src/android/libs/armeabi/libBaiduMapSDK_base_v6_4_0.so" target-dir="app/src/main/libs/armeabi" />
+        <source-file src="src/android/libs/armeabi/libBaiduMapSDK_map_v6_4_0.so"  target-dir="app/src/main/libs/armeabi"/>
+        <source-file src="src/android/libs/armeabi/liblocSDK8a.so"  target-dir="app/src/main/libs/armeabi"/>
+
+        <source-file src="src/android/libs/armeabi-v7a/libBaiduMapSDK_base_v6_4_0.so" target-dir="app/src/main/libs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi-v7a/libBaiduMapSDK_map_v6_4_0.so" target-dir="app/src/main/libs/armeabi-v7a"/>
+        <source-file src="src/android/libs/armeabi-v7a/liblocSDK8a.so" target-dir="app/src/main/libs/armeabi-v7a"/>
+
+        <source-file src="src/android/libs/x86/libBaiduMapSDK_base_v6_4_0.so" target-dir="app/src/main/libs/x86"/>
+        <source-file src="src/android/libs/x86/libBaiduMapSDK_map_v6_4_0.so" target-dir="app/src/main/libs/x86"/>
+        <source-file src="src/android/libs/x86/liblocSDK8a.so" target-dir="app/src/main/libs/x86"/>
+
+        <source-file src="src/android/libs/x86_64/libBaiduMapSDK_base_v6_4_0.so" target-dir="app/src/main/libs/x86_64"/>
+        <source-file src="src/android/libs/x86_64/libBaiduMapSDK_map_v6_4_0.so" target-dir="app/src/main/libs/x86_64"/>
+        <source-file src="src/android/libs/x86_64/liblocSDK8a.so" target-dir="app/src/main/libs/x86_64"/>
+
+        <lib-file src="src/android/libs/BaiduLBS_Android.jar" />
+
+
+        <!-- java -->
+        <source-file src="src/android/Location.java" target-dir="src/com/microfountain/location" />
+        <source-file src="src/android/location/LocationActivity.java" target-dir="src/com/microfountain/location" />
+        <source-file src="src/android/location/LocationBaseActivity.java" target-dir="src/com/microfountain/location" />
+        <source-file src="src/android/location/LocationDetailActivity.java" target-dir="src/com/microfountain/location" />
+        <source-file src="src/android/location/LocationListAdapter.java" target-dir="src/com/microfountain/location" />
+        <source-file src="src/android/location/RequestDialog.java" target-dir="src/com/microfountain/location" />
+        <source-file src="src/android/location/SearchListAdapter.java" target-dir="src/com/microfountain/location" />
+        <source-file src="src/android/location/Utils.java" target-dir="src/com/microfountain/location" />
+
+        <!-- layout -->
+        <resource-file src="src/android/res/layout/activity_location.xml" target="res/layout/activity_location.xml" />
+        <resource-file src="src/android/res/layout/activity_location_detail.xml" target="res/layout/activity_location_detail.xml" />
+        <resource-file src="src/android/res/layout/location_bottom_layout.xml" target="res/layout/location_bottom_layout.xml" />
+        <resource-file src="src/android/res/layout/location_poi_search_item.xml" target="res/layout/location_poi_search_item.xml" />
+        <resource-file src="src/android/res/layout/location_request_dialog_layout.xml" target="res/layout/location_request_dialog_layout.xml" />
+        <resource-file src="src/android/res/layout/location_suggestion_search_item.xml" target="res/layout/location_suggestion_search_item.xml" />
+
+        <!-- drawable -->
+        <resource-file src="src/android/res/drawable/icon_20pt_position_loading1.png" target="res/drawable/icon_20pt_position_loading1.png" />
+        <resource-file src="src/android/res/drawable/icon_20pt_position_loading2.png" target="res/drawable/icon_20pt_position_loading2.png" />
+        <resource-file src="src/android/res/drawable/icon_20pt_position_loading3.png" target="res/drawable/icon_20pt_position_loading3.png" />
+        <resource-file src="src/android/res/drawable/icon_20pt_position_loading4.png" target="res/drawable/icon_20pt_position_loading4.png" />
+        <resource-file src="src/android/res/drawable/icon_20pt_position_loading5.png" target="res/drawable/icon_20pt_position_loading5.png" />
+        <resource-file src="src/android/res/drawable/icon_20pt_position_loading6.png" target="res/drawable/icon_20pt_position_loading6.png" />
+        <resource-file src="src/android/res/drawable/icon_20pt_position_loading7.png" target="res/drawable/icon_20pt_position_loading7.png" />
+        <resource-file src="src/android/res/drawable/icon_20pt_position_loading8.png" target="res/drawable/icon_20pt_position_loading8.png" />
+
+        <resource-file src="src/android/res/drawable/bg_location_search.xml" target="res/drawable/bg_location_search.xml" />
+        <resource-file src="src/android/res/drawable/icon_loaction_home.xml" target="res/drawable/icon_loaction_home.xml" />
+        <resource-file src="src/android/res/drawable/icon_location_back.xml" target="res/drawable/icon_location_back.xml" />
+        <resource-file src="src/android/res/drawable/icon_location_clear.xml" target="res/drawable/icon_location_clear.xml" />
+        <resource-file src="src/android/res/drawable/icon_location_loading.xml" target="res/drawable/icon_location_loading.xml" />
+
+        <resource-file src="src/android/res/drawable/icon_location_center.png" target="res/drawable/icon_location_center.png" />
+        <resource-file src="src/android/res/drawable/icon_location_mark.png" target="res/drawable/icon_location_mark.png" />
+        <resource-file src="src/android/res/drawable/icon_location_more.xml" target="res/drawable/icon_location_more.xml" />
+        <resource-file src="src/android/res/drawable/icon_location_radio.xml" target="res/drawable/icon_location_radio.xml" />
+        <resource-file src="src/android/res/drawable/icon_location_search_bar.xml" target="res/drawable/icon_location_search_bar.xml" />
+
+        <resource-file src="src/android/res/drawable/icon_position_d_arrow.xml" target="res/drawable/icon_position_d_arrow.xml" />
+        <resource-file src="src/android/res/drawable/loading.xml" target="res/drawable/loading.xml" />
+        <resource-file src="src/android/res/drawable/location_button_bg.xml" target="res/drawable/location_button_bg.xml" />
+        <resource-file src="src/android/res/drawable/location_head_bg.xml" target="res/drawable/location_head_bg.xml" />
+        <resource-file src="src/android/res/drawable/location_request_dialog_bg.xml" target="res/drawable/location_request_dialog_bg.xml" />
+
+        <resource-file src="src/android/res/mipmap-hdpi/icon_location_current.png" target="res/mipmap-hdpi/icon_location_current.png" />
+        <resource-file src="src/android/res/mipmap-hdpi/icon_location_marker.png" target="res/mipmap-hdpi/icon_location_marker.png" />
+
+        <resource-file src="src/android/res/mipmap-mdpi/icon_location_current.png" target="res/mipmap-mdpi/icon_location_current.png" />
+        <resource-file src="src/android/res/mipmap-mdpi/icon_location_marker.png" target="res/mipmap-mdpi/icon_location_marker.png" />
+
+        <resource-file src="src/android/res/mipmap-xhdpi/icon_location_current.png" target="res/mipmap-xhdpi/icon_location_current.png" />
+        <resource-file src="src/android/res/mipmap-xhdpi/icon_location_marker.png" target="res/mipmap-xhdpi/icon_location_marker.png" />
+
+
+        <resource-file src="src/android/res/values/location_colors.xml" target="res/values/location_colors.xml" />
+
+
+    </platform>
+</plugin>
